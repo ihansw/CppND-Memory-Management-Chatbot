@@ -45,6 +45,83 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
+// Task 2: Copy Constructor
+ChatBot::ChatBot(const ChatBot &source)
+{
+  	std::cout << "ChatBot Copy Constructor Called" << std::endl;
+  
+	_chatLogic = source._chatLogic;
+  	_rootNode = source._rootNode;
+  	_image = new wxBitmap(*source._image);
+  	_currentNode = source._currentNode;
+  	
+}
+
+// Task 2: Copy assignment constructor
+ChatBot &ChatBot::operator=(const ChatBot &source)
+{
+	std::cout << "ChatBot Copy Assignment Constructor Called" << std::endl;
+	if (this == &source)
+    {
+    	return *this;
+    }
+  	
+  	delete _image;
+  	_image = new wxBitmap(*source._image);
+  	
+  	_chatLogic = source._chatLogic;
+  	_rootNode = source._rootNode;
+  	_currentNode = source._currentNode;
+  
+  	return *this;
+}
+
+// Task 2: Move Constructor
+ChatBot::ChatBot (ChatBot &&source)
+{
+	std::cout << "ChatBot Move Constructor Called" << std::endl;
+  
+  	_chatLogic = source._chatLogic;
+  	_chatLogic->SetChatbotHandle(this);
+  	_rootNode = source._rootNode;
+  	_currentNode = source._currentNode;
+  	_image = source._image;
+  
+  	source._chatLogic = nullptr;
+  	source._rootNode = nullptr;
+  	source._currentNode = nullptr;
+  	source._image = NULL;
+  
+  	
+  
+}
+    
+// Taks 2: Move Assignment Operator
+ChatBot &ChatBot::operator=(ChatBot &&source)
+{
+	std::cout << "ChatBot Move Assignment Operator Called" << std::endl;
+  
+  	if (this == &source){
+      	return *this;
+    }
+  	
+  	// There might be some heap allocation of the destination object already. We need to delete it first before allocating new data on heap.
+  	delete _image;
+  
+  	_chatLogic = source._chatLogic;
+  	_chatLogic->SetChatbotHandle(this);
+  	_rootNode = source._rootNode;
+  	_currentNode = source._currentNode;
+  	_image = source._image;
+  	
+  	source._chatLogic = nullptr;
+  	source._rootNode = nullptr;
+  	source._currentNode = nullptr;
+  	source._image = NULL;
+  
+ 	return *this;
+}
+
 ////
 //// EOF STUDENT CODE
 
