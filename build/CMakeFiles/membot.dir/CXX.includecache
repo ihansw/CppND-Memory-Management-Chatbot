@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/workspace/ChatBot_Udacity_Evan/src/chatbot.cpp
-iostream
--
-random
--
-algorithm
--
-ctime
--
-chatlogic.h
-/home/workspace/ChatBot_Udacity_Evan/src/chatlogic.h
-graphnode.h
-/home/workspace/ChatBot_Udacity_Evan/src/graphnode.h
-graphedge.h
-/home/workspace/ChatBot_Udacity_Evan/src/graphedge.h
-chatbot.h
-/home/workspace/ChatBot_Udacity_Evan/src/chatbot.h
-
 /home/workspace/ChatBot_Udacity_Evan/src/chatbot.h
 wx/bitmap.h
 -
@@ -35,6 +17,30 @@ wx/wx.h
 -
 memory
 -
+
+/home/workspace/ChatBot_Udacity_Evan/src/chatlogic.cpp
+fstream
+-
+sstream
+-
+iostream
+-
+vector
+-
+iterator
+-
+tuple
+-
+algorithm
+-
+graphedge.h
+/home/workspace/ChatBot_Udacity_Evan/src/graphedge.h
+graphnode.h
+/home/workspace/ChatBot_Udacity_Evan/src/graphnode.h
+chatbot.h
+/home/workspace/ChatBot_Udacity_Evan/src/chatbot.h
+chatlogic.h
+/home/workspace/ChatBot_Udacity_Evan/src/chatlogic.h
 
 /home/workspace/ChatBot_Udacity_Evan/src/chatlogic.h
 vector
