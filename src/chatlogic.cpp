@@ -172,20 +172,28 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
                           
                             // create new edge
-                            GraphEdge *edge = new GraphEdge(id);
+                          	// Task 4: Exclusive ownership for the outgoing/child edges. 
+                            //GraphEdge *edge = new GraphEdge(id);
+                          	std::unique_ptr<GraphEdge> edge = std::make_unique<GraphEdge>(id);
+                          
                           	// Task 3: Change vector _nodes elements (GraphNode raw pointers) to exclusive smart pointers (unique_ptr)
                             //edge->SetChildNode(*childNode);
                             //edge->SetParentNode(*parentNode);
                           	edge->SetChildNode(childNode->get());
                             edge->SetParentNode(parentNode->get());
-                            _edges.push_back(edge);
+                          
+                            // Task 4: Transfer ownership of GraphEdge from ChatLogic to GraphNode -> _edges does not exist anymore. Comment the following line.
+                          	//_edges.push_back(edge);
 
                             // find all keywords for current node
                             AddAllTokensToElement("KEYWORD", tokens, *edge);
 
                             // store reference in child node and parent node
-                            (*childNode)->AddEdgeToParentNode(edge);
-                            (*parentNode)->AddEdgeToChildNode(edge);
+                          	// Task 4: Exclusive ownership for the outgoing/child edges. 
+                            //(*childNode)->AddEdgeToParentNode(edge);
+                            //(*parentNode)->AddEdgeToChildNode(edge);
+                          	(*childNode)->AddEdgeToParentNode(edge.get());
+                            (*parentNode)->AddEdgeToChildNode(std::move(edge));
                         }
 
                         ////

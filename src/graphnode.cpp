@@ -27,9 +27,10 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
     _parentEdges.push_back(edge);
 }
 
-void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
+// Task 4: exclusive ownership for the child edge. We need to use move() for transferring the input edge's ownership.
+void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 {
-    _childEdges.push_back(edge);
+    _childEdges.push_back(std::move(edge));
 }
 
 //// STUDENT CODE
@@ -52,8 +53,8 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
 {
     //// STUDENT CODE
     ////
-
-    return _childEdges[index];
+	// Task 4: Since the element of the _childEdges vector is a smart pointer, change it to raw pointer by using get().
+    return _childEdges[index].get();
 
     ////
     //// EOF STUDENT CODE

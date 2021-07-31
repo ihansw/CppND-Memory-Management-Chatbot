@@ -20,7 +20,8 @@ private:
     // Task 3: Change vector _nodes elements (GraphNode raw pointers) to exclusive smart pointers (unique_ptr)
     std::vector<std::unique_ptr<GraphNode>> _nodes;
     
-    std::vector<GraphEdge *> _edges;
+    // Task 4: Transfer ownership of GraphEdge from ChatLogic to GraphNode.
+    //std::vector<GraphEdge *> _edges;
 
     ////
     //// EOF STUDENT CODE
