@@ -13,8 +13,6 @@ class GraphNode;
 class ChatLogic
 {
 private:
-    //// STUDENT CODE
-    ////
 
     // data handles (owned)
     // Task 3: Change vector _nodes elements (GraphNode raw pointers) to exclusive smart pointers (unique_ptr)
@@ -22,9 +20,6 @@ private:
     
     // Task 4: Transfer ownership of GraphEdge from ChatLogic to GraphNode.
     //std::vector<GraphEdge *> _edges;
-
-    ////
-    //// EOF STUDENT CODE
 
     // data handles (not owned)
     GraphNode *_currentNode;

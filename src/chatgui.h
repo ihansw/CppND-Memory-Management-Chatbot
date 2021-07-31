@@ -14,17 +14,9 @@ private:
     wxBoxSizer *_dialogSizer;
     wxBitmap _image;
 
-    //// STUDENT CODE
-    ////
-
     // Task #1: Change raw pointer --> Unique pointer
-    // Previous: 
     // ChatLogic *_chatLogic;
-    // New:
     std::unique_ptr<ChatLogic> _chatLogic;
-
-    ////
-    //// EOF STUDENT CODE
 
 public:
     // constructor / destructor
@@ -33,9 +25,7 @@ public:
 
     // getter / setter
     // Task #1: Change raw pointer --> Unique pointer
-    // Previous:
     //ChatLogic *GetChatLogicHandle() { return _chatLogic; }
-    // New:
     ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
     
     // events

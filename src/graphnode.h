@@ -13,8 +13,6 @@ class GraphEdge;
 class GraphNode
 {
 private:
-    //// STUDENT CODE
-    ////
 
     // data handles (owned)
     // Task 4: Transfer ownership of GraphEdge from ChatLogic to GraphNode.
@@ -24,10 +22,9 @@ private:
 
     // data handles (not owned)
     std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes 
-    ChatBot *_chatBot;
-
-    ////
-    //// EOF STUDENT CODE
+    
+    // Task 5: chatBot instance is being passed with move(). No pointer is needed.
+    ChatBot _chatBot;
 
     // proprietary members
     int _id;
@@ -50,14 +47,9 @@ public:
     void AddEdgeToParentNode(GraphEdge *edge);
     // Task 4: exclusive ownership for the child edge. 
     void AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge);
-
-    //// STUDENT CODE
-    ////
-
-    void MoveChatbotHere(ChatBot *chatbot);
-
-    ////
-    //// EOF STUDENT CODE
+	
+    // Task 5: chatBot instance is being passed with move(). No pointer is needed.
+    void MoveChatbotHere(ChatBot chatbot);
 
     void MoveChatbotToNewNode(GraphNode *newNode);
 };

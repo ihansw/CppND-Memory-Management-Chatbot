@@ -8,13 +8,8 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
-    //// STUDENT CODE
-    ////
-
-    delete _chatBot; 
-
-    ////
-    //// EOF STUDENT CODE
+	// Task 5: chatBot instance is now on stack. No need to delete.
+    // delete _chatBot; 
 }
 
 void GraphNode::AddToken(std::string token)
@@ -33,29 +28,24 @@ void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
     _childEdges.push_back(std::move(edge));
 }
 
-//// STUDENT CODE
-////
-void GraphNode::MoveChatbotHere(ChatBot *chatbot)
+
+// Task 5: chatBot instance is being passed with move(). No pointer is needed.
+void GraphNode::MoveChatbotHere(ChatBot chatbot)
 {
-    _chatBot = chatbot;
-    _chatBot->SetCurrentNode(this);
+    _chatBot = std::move(chatbot);
+    _chatBot.SetCurrentNode(this);
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
     newNode->MoveChatbotHere(_chatBot);
-    _chatBot = nullptr; // invalidate pointer at source
+  	// Task 5: chatBot instance is now on stack. No need to invalidate.
+    //_chatBot = nullptr; // invalidate pointer at source
 }
-////
-//// EOF STUDENT CODE
+
 
 GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
 {
-    //// STUDENT CODE
-    ////
 	// Task 4: Since the element of the _childEdges vector is a smart pointer, change it to raw pointer by using get().
     return _childEdges[index].get();
-
-    ////
-    //// EOF STUDENT CODE
 }

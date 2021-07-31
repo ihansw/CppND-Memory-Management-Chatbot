@@ -42,9 +42,6 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
-
 // Task 2: Copy Constructor
 ChatBot::ChatBot(const ChatBot &source)
 {
@@ -92,8 +89,6 @@ ChatBot::ChatBot (ChatBot &&source)
   	source._currentNode = nullptr;
   	source._image = NULL;
   
-  	
-  
 }
     
 // Taks 2: Move Assignment Operator
@@ -122,8 +117,6 @@ ChatBot &ChatBot::operator=(ChatBot &&source)
  	return *this;
 }
 
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
